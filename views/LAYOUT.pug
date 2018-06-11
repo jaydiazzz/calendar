@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+	head
+		title= title
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0')
+
+		// Plug In CSS
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet")
+
+		// custom CSS
+		link(rel="stylesheet", href="/static/css/DEFAULT.css", type="text/css")
+
+		block customCSS
+
+	body
+		#content
+			block content
+
+	script(src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js")
+	script(src="/static/js/GLOBALS.js")
+
+	if ( env === 'development' )
+		script(src='/static/js/vue.js')
+		script(src='/static/js/firebase-dev.js')
+
+	if ( env === 'production' )
+		script(src="/static/js/vue-prod.js")
+		script(src='/static/js/firebase-prod.js')
+
+	//custom JS
+	block customJS

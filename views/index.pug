@@ -1,0 +1,17 @@
+extends LAYOUT.pug
+
+block customCSS
+	link(href="/static/css/index.css", rel="stylesheet", type="text/css")
+block content
+	#calendar
+		h2 S
+		h2 M
+		h2 T
+		h2 W
+		h2 T
+		h2 F
+		h2 S
+		div(v-for="days in daysIn")
+			p {{days}}
+block customJS
+	script(src='/static/js/index.js')

@@ -1,0 +1,12 @@
+extends LAYOUT.pug
+
+block customCSS
+	link(href='/static/css/TEMPLATE.css' rel='stylesheet')
+
+
+block content
+	h1 {{ greeting }}
+	h2 This template was generated with LOVE by the codemonkeys.
+
+block customJS
+	script(src='/static/js/TEMPLATE.js')
