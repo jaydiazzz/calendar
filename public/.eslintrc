@@ -1,0 +1,7 @@
+{
+    "globals" : {
+        "HasProperty": true,
+        "FbRef": true,
+        "Vue": true
+    }
+}

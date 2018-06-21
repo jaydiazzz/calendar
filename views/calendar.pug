@@ -1,0 +1,79 @@
+extends LAYOUT.pug
+
+block customCSS
+	link(href="/static/css/calendar.css", rel="stylesheet", type="text/css")
+
+block content
+	#calendar-container(:class='calendarState')
+		.arrows
+			a#prev(@click='removeMonth') 
+				i.fas.fa-angle-left.fa-5x
+		
+			h1 {{ months[activeMonth].name }} {{ activeYear }} 
+			
+			a#next(@click='addMonth')
+				i.fas.fa-angle-right.fa-5x
+		#calendar
+			h2 S
+			h2 M
+			h2 T
+			h2 W
+			h2 T
+			h2 F
+			h2 S
+
+			div.gray.days(v-for='i in lastMonth' @click='activeMonth -= 1')
+				p {{ i }}
+
+			div.days(v-for='day in thisMonth' @click='toggleEvent( tasks[day.key] )')
+				p {{ day.day }}
+				.tasks
+					.task-title(v-for='(task, index) in tasks[day.key]')
+						p(v-if='index < 3') {{ task.title }}
+					.task-title(v-if='tasks[day.key] && tasks[day.key].length > 3') 
+						p ...
+
+			.show-task(v-show='seen')
+				h2 Task for {{ activeDate.month }} / {{ activeDate.day }} / {{ activeDate.year }}
+				a(@click.stop @click='seen = !seen')
+					i.fas.fa-times.fa-3x
+				.task-container
+					h3(v-for='task in activeTasks')
+						strong Title: 
+						| {{ task.title }}
+						br
+						strong Description: 
+						| {{ task.description }}
+
+			.add-task(v-show='alsoSeen')
+				a(@click.stop @click='toggleAdd(i)')
+					i.fas.fa-times.fa-3x
+
+				.user-input
+					.title
+						h1 Add new task
+						hr
+					input.input-title(type='text' placeholder='Title' @keyup.enter='addEvent()' @click.stop v-model='title')
+					.row
+						input.input-month(type='number' placeholder='Month' min='1' max='12' required @keyup.enter='submit()' @click.stop v-model='month')
+						input.input-day(type='number' placeholder='Day' min='1' max='31' required @keyup.enter='submit()' @click.stop v-model='day')
+						input.input-year(type='number' placeholder='Year' min='2018' max='3000' required @keyup.enter='submit()' @click.stop v-model='year')
+					input.input-description(type='text' placeholder='Description (optional)' @keyup.enter='submit()' @click.stop v-model='description')
+					a.submit-button(@click.prevent='submit()') Submit
+
+				.user-output
+					.title
+						h1 Result
+						hr
+					p.output-title {{ title }}
+					.row
+						p.output-month {{ month }}
+						p.output-day {{ day }}
+						p.output-year {{ year }}
+					p.output-description {{ description }}
+
+			div.gray.days(v-for='i in nextMonth' @click='activeMonth += 1')
+				p {{ i }}
+		a.add-new.fas.fa-plus.fa-3x(@click.stop='toggleAdd(i)')
+block customJS
+	script(src='/static/js/calendar.js')

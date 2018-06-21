@@ -1,7 +1,6 @@
 {
   "extends": "airbnb",
   "rules": {
-    "linebreak-style": ["error", "windows"],
     "no-use-before-define": 0,
 		"no-prototype-builtins" : "off",
     "func-names": 0,
@@ -11,6 +10,10 @@
     "quotes": [
       "error",
       "single"
+    ],
+    "linebreak-style": [
+      "error",
+      "windows"
     ],
     "quote-props": [
       "error",

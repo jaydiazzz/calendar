@@ -1,8 +1,8 @@
 /* Environment Configuration */
 
 // This will not override system-set variables.
-require( 'dotenv' ).config();
 require( 'apprequire' )( __dirname );
+require( 'dotenv' ).config();
 
 /* Dependencies */
 

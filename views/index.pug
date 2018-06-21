@@ -1,17 +1,22 @@
 extends LAYOUT.pug
 
 block customCSS
-	link(href="/static/css/index.css", rel="stylesheet", type="text/css")
+    link(rel="stylesheet", href="/static/css/index.css", type="text/css")
+
 block content
-	#calendar
-		h2 S
-		h2 M
-		h2 T
-		h2 W
-		h2 T
-		h2 F
-		h2 S
-		div(v-for="days in daysIn")
-			p {{days}}
+    .instructions
+        form#login-form
+            div
+                input.email(type="text" placeholder="email" v-model="email") 
+                input.password(type="text" placeholder="password" v-model="password")
+                button.submit(@click.prevent="signIn()") Login
+            div
+                input.email(type="text" placeholder="email" v-model="email")
+                input.password(type="text" placeholder="password" v-model="password")
+                button.submit(@click.prevent="signUp()") Sign Up
+            a(@click="login()") login with google
+            p {{ this.name }}
+            a(@click="signOut()") Sign Out
+
 block customJS
-	script(src='/static/js/index.js')
+    script(src="/static/js/index.js")

@@ -3,6 +3,8 @@ const HasProperty = ( a, b ) => Object.prototype.hasOwnProperty.call( a, b ); //
 
 const FirebaseKey = () => firebase.database().ref().push().key;
 
+const FbRef = firebase.database().ref();
+
 /*
  * converts object to array
  * obj - object - object to be turned into array

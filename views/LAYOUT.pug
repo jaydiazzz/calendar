@@ -7,26 +7,32 @@ html(lang="en")
 		// Plug In CSS
 		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 		link(href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet")
 
 		// custom CSS
 		link(rel="stylesheet", href="/static/css/DEFAULT.css", type="text/css")
 
+		//FontAwesome
+		link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous")
+		
 		block customCSS
 
 	body
 		#content
 			block content
 
-	script(src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js")
-	script(src="/static/js/GLOBALS.js")
+	script(src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js")
+
 
 	if ( env === 'development' )
-		script(src='/static/js/vue.js')
+		script(src='https://unpkg.com/vue')
 		script(src='/static/js/firebase-dev.js')
 
 	if ( env === 'production' )
 		script(src="/static/js/vue-prod.js")
 		script(src='/static/js/firebase-prod.js')
+
+	script(src="/static/js/GLOBALS.js")
 
 	//custom JS
 	block customJS

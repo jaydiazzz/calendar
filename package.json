@@ -1,19 +1,57 @@
 {
-  "name": "calendar",
+  "name": "template",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Template",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass": "node-sass --watch public/sass -o public/css",
+    "lint": "eslint ./",
+    "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000"
   },
+  "pre-commit": [
+    "test"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaydiazzz/calendar.git"
+    "url": "git+https://github.com/SpacebarTech/template.git"
   },
-  "author": "",
+  "keywords": [
+    "Template"
+  ],
+  "author": "Tim Farrow",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jaydiazzz/calendar/issues"
+    "url": "https://github.com/SpacebarTech/template/issues"
   },
-  "homepage": "https://github.com/jaydiazzz/calendar#readme"
+  "homepage": "https://github.com/SpacebarTech/template#readme",
+  "dependencies": {
+    "apprequire": "^1.0.1",
+    "body-parser": "^1.18.2",
+    "celebrate": "^7.0.4",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "firebase-admin": "^4.2.1",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "joi": "^13.1.2",
+    "node-sass-middleware": "^0.11.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.1",
+    "sendgrid": "^4.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-subset": "^1.6.0",
+    "co-mocha": "^1.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-defaults": "^9.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-react": "^7.1.0",
+    "mocha": "^3.5.3",
+    "pre-commit": "^1.2.2"
+  }
 }

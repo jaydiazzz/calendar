@@ -1,34 +1,84 @@
-const d = new Date();
+const app = new Vue( { //eslint-disable-line
+	el : 'form',
 
-function daysOf( month, year ) {
-	return new Date( year, month, 0 ).getDate();
-}
-// get this months value
-let monthNow = d.getMonth();
+	mounted() {
+		firebase.auth().onAuthStateChanged( ( user ) => {
+			if ( user ) {
+                console.log( user.displayName );
+                console.log( user.email );
+            }
+			else {
+                console.log( 'nope' );
+            }
+		} );
+	},
 
-// get this years value
-const yearNow = d.getFullYear();
-
-for ( let monthCount = 0; monthCount += 1; monthCount < 11 ) {
-	let yearCount = 2000;
-	if ( monthCount === 11 ) {
-		monthCount = 0;
-		yearCount += 1;
-	}
-	else if ( yearCount === 2010 ) {
-		monthCount = 12;
-		break;
-	}
-	console.log( daysOf( monthCount, yearCount ) );
-}
-
-// monthNow is originally the next month so we minus one to make it the current month
-monthNow -= 1;
-
-console.log( daysOf( monthNow, yearNow ) );
-const app = new Vue( {
-	el   : '#calendar',
 	data : {
-		daysIn : daysOf( monthNow, yearNow )
+		userId   : '',
+		name     : '',
+		email    : '',
+		user     : {},
+		password : ''
+	},
+
+	methods : {
+		login() {
+			const provider = new firebase.auth.GoogleAuthProvider();
+			firebase
+                .auth()
+                .signInWithPopup( provider )
+                .then( function ( result ) {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const token = result.credential.accessToken;
+                    // The signed-in user info.
+                    const user = result.user;
+                    this.name = user.email;
+                } )
+                .catch( ( error ) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // The email of the user's account used.
+                    const email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    const credential = error.credential;
+                } );
+		},
+		signOut() {
+			firebase
+                .auth()
+                .signOut()
+                .then( () => {
+                    console.log( 'signed out user' );
+                } )
+                .catch( ( error ) => {
+                    console.log( error );
+                } );
+		},
+		signUp() {
+			if ( firebase.auth().currentUser != null ) {
+                this.signOut();
+            }
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword( this.email, this.password )
+                .catch( () => {
+                    const errorCode    = error.code;
+                    const errorMessage = error.message;
+                } );
+		},
+		signIn() {
+            if ( firebase.auth().currentUser != null ) {
+                this.signOut();
+            }
+            firebase
+                .auth()
+                .signInWithEmailAndPassword( this.email, this.password )
+                .catch( ( error ) => {
+                    const errorCode    = error.code;
+                    const errorMessage = error.message;
+                } );
+		}
 	}
 } );
+
