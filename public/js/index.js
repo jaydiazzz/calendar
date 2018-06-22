@@ -1,84 +1,132 @@
+// Swiper Js
+const swiper = new Swiper( '.swiper-container', { //eslint-disable-line
+	direction : 'horizontal',
+	loop      : false,
+
+	pagination : {
+		el : '.swiper-pagination',
+	},
+	navigation : {
+		nextEl : '.swiper-button-next',
+		prevEl : '.swiper-button-prev',
+	},
+} );
+
+// Vue Model
+
 const app = new Vue( { //eslint-disable-line
-	el : 'form',
+	el : '.instructions',
 
 	mounted() {
 		firebase.auth().onAuthStateChanged( ( user ) => {
 			if ( user ) {
-                console.log( user.displayName );
-                console.log( user.email );
-            }
+
+				this.userId = user.uid;
+				this.name   = user.name;
+				this.email  = user.email;
+
+				console.log( user.name );
+				console.log( user.email );
+				console.log( this.userId );
+
+				FbRef.child( 'tasks' )
+				.child( this.userId )
+				.push( {
+					day         : new Date().getDate(),
+					description : 'Look through the calendar and enjoy!',
+					month       : new Date().getMonth(),
+					title       : 'My First Task',
+					year        : new Date().getFullYear(),
+				} );
+			}
 			else {
-                console.log( 'nope' );
-            }
+				console.log( 'nope' );
+				this.userId   = null;
+				this.name     = null;
+				this.email    = null;
+				this.password = null;
+				this.user     = null;
+			}
 		} );
 	},
 
 	data : {
-		userId   : '',
-		name     : '',
-		email    : '',
-		user     : {},
-		password : ''
+		userId   : null,
+		name     : null,
+		email    : null,
+		user     : null,
+		password : null,
+
+		loginPage : false,
+		signPage  : false,
+
+		showInstructions : false,
 	},
 
 	methods : {
+
 		login() {
+			if ( this.userId != null ) {
+				confirm( 'You\'re already signed in, please sign out first.' );
+				return;
+			}
 			const provider = new firebase.auth.GoogleAuthProvider();
 			firebase
                 .auth()
                 .signInWithPopup( provider )
-                .then( function ( result ) {
+				.then( function ( result ) {
                     // This gives you a Google Access Token. You can use it to access the Google API.
-                    const token = result.credential.accessToken;
+					const token = result.credential.accessToken;
                     // The signed-in user info.
-                    const user = result.user;
-                    this.name = user.email;
-                } )
-                .catch( ( error ) => {
-                    // Handle Errors here.
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    // The email of the user's account used.
-                    const email = error.email;
-                    // The firebase.auth.AuthCredential type that was used.
-                    const credential = error.credential;
-                } );
+					const user = result.user;
+					this.name = user.email;
+				} );
 		},
+
 		signOut() {
 			firebase
                 .auth()
                 .signOut()
-                .then( () => {
-                    console.log( 'signed out user' );
-                } )
+				.then( () => {
+					console.log( 'signed out user' );
+				} )
                 .catch( ( error ) => {
                     console.log( error );
                 } );
 		},
+
 		signUp() {
-			if ( firebase.auth().currentUser != null ) {
-                this.signOut();
-            }
-            firebase
+			if ( this.userId != null ) {
+				confirm( 'You\'re already signed in, please sign out first.' );
+				return;
+			}
+
+			firebase
                 .auth()
-                .createUserWithEmailAndPassword( this.email, this.password )
-                .catch( () => {
-                    const errorCode    = error.code;
-                    const errorMessage = error.message;
-                } );
+				.createUserWithEmailAndPassword( this.email, this.password );
+
+			this.showInstructions = true;
+			this.signPage 		  = false;
+			this.loginPage 		  = false;
 		},
+
 		signIn() {
-            if ( firebase.auth().currentUser != null ) {
-                this.signOut();
-            }
-            firebase
-                .auth()
-                .signInWithEmailAndPassword( this.email, this.password )
-                .catch( ( error ) => {
-                    const errorCode    = error.code;
-                    const errorMessage = error.message;
-                } );
-		}
+			firebase
+			.auth()
+			.signInWithEmailAndPassword( this.email, this.password )
+			.catch( ( error ) => {
+				const errorCode    = error.code;
+				const errorMessage = error.message;
+			} );
+			if ( this.userId != null ) {
+				location.href = 'calendar';
+				return;
+			}
+		},
+
+		redirect() {
+			window.location.href = 'calendar';
+		},
 	}
 } );
 

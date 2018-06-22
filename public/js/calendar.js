@@ -2,10 +2,11 @@ const app = new Vue( { // eslint-disable-line
 	el : '#calendar-container',
 	created() {
 
-		firebase.auth().onAuthStateChanged( ( user ) => { 
+		firebase.auth().onAuthStateChanged( ( user ) => {
 
 			if ( !user ) {
-				// user not logged in 
+				confirm( 'You\'re not signed in, you will be redirected to the sign in page now.' );
+				location.href = 'index';
 				return;
 			}
 

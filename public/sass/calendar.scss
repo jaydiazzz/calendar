@@ -1,8 +1,8 @@
-$black : #373737;
+@import '/sass/_variables.scss';
 
 body{
     background-color:#ffffff;
-    color:$black;
+    color:$mainBlack;
     font-family:'Nunito Sans', sans-serif;
     margin:0;
     background: url('https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') center/100% 100% no-repeat;
@@ -31,7 +31,7 @@ body{
             border-radius:3px;
             overflow:hidden;
             transition: 3s all ease;
-            border:2px solid $black;
+            border:2px solid $mainBlack;
             animation:2s bounce 2;
             animation-fill-mode:forwards;
 
@@ -54,7 +54,7 @@ body{
                 height:30%;
                 flex-flow:row;
                 margin:auto;
-                background-color:#708e90;
+                background-color:$green;
                 color:#f9f9f9;
                 >*{
                     opacity:0;
@@ -74,7 +74,7 @@ body{
                 justify-content:flex-end;
                 flex-flow:row wrap;
                 text-align:center;
-                color:$black;
+                color:$mainBlack;
                 background-color:#f9f9f9;
                 >*{
                     opacity:0;
@@ -142,7 +142,7 @@ body{
                 .add-task{
                     position:absolute;
                     background-color:white;
-                    color:$black;
+                    color:$mainBlack;
                     width:100%;
                     height:100%;
                     border-radius:3px;
