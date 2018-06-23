@@ -53,5 +53,8 @@
     "eslint-plugin-react": "^7.1.0",
     "mocha": "^3.5.3",
     "pre-commit": "^1.2.2"
+  },
+  "directories": {
+    "test": "test"
   }
 }

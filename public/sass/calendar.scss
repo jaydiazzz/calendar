@@ -1,4 +1,4 @@
-@import '/sass/_variables.scss';
+@import './_variables.scss';
 
 body{
     background-color:#ffffff;
@@ -16,7 +16,7 @@ body{
         z-index:-1;
         height:100%;
         width:100%;
-    }
+    } 
     #content{
         width: 100%;
         display: flex;
@@ -54,7 +54,7 @@ body{
                 height:30%;
                 flex-flow:row;
                 margin:auto;
-                background-color:$green;
+                background-color:$mainGreen;
                 color:#f9f9f9;
                 >*{
                     opacity:0;

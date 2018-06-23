@@ -1,17 +1,3 @@
-// Swiper Js
-const swiper = new Swiper( '.swiper-container', { //eslint-disable-line
-	direction : 'horizontal',
-	loop      : false,
-
-	pagination : {
-		el : '.swiper-pagination',
-	},
-	navigation : {
-		nextEl : '.swiper-button-next',
-		prevEl : '.swiper-button-prev',
-	},
-} );
-
 // Vue Model
 
 const app = new Vue( { //eslint-disable-line
@@ -60,7 +46,7 @@ const app = new Vue( { //eslint-disable-line
 		loginPage : false,
 		signPage  : false,
 
-		showInstructions : false,
+		showInstructions : "hidden",
 	},
 
 	methods : {
@@ -105,7 +91,7 @@ const app = new Vue( { //eslint-disable-line
                 .auth()
 				.createUserWithEmailAndPassword( this.email, this.password );
 
-			this.showInstructions = true;
+			this.showInstructions = "opened";
 			this.signPage 		  = false;
 			this.loginPage 		  = false;
 		},
@@ -127,6 +113,21 @@ const app = new Vue( { //eslint-disable-line
 		redirect() {
 			window.location.href = 'calendar';
 		},
+
+		firstSlide() {
+			swiper.activeIndex = 0;
+			swiper.slideTo(0);
+		},
 	}
 } );
 
+// Swiper Js
+const swiper = new Swiper( '.swiper-container', { //eslint-disable-line
+	navigation : {
+		nextEl : '.swiper-button-next',
+		prevEl : '.swiper-button-prev',
+	},
+	pagination : {
+		el : '.swiper-pagination',
+	},
+} );
