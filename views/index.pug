@@ -1,74 +1,79 @@
 extends LAYOUT.pug
 
 block customCSS
-    link(rel="stylesheet", href="/static/css/index.css", type="text/css")
-    
-    // Google Font
-    link(href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet")
-    
-    // Swiper CSS
-    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css")
+	link(href="/static/css/index.css", rel="stylesheet", type="text/css")
 
 block content
-    .instructions
-        h1 Hi {{ this.email }}
-        
-        .user-login(v-if="(signPage === false && loginPage === false)")
-            a.buttons(@click="loginPage = true" href="#") Login
-            a.buttons(@click="signPage = true" href="#") Sign Up
-            a.sign-out(@click="signOut()" href="#") Sign Out
-        
-        
-        form#login-form(v-if="loginPage")
-            a.fas.fa-times.fa-3x(@click='loginPage = false' href="#")
-            .login-field
-                input.email(type="text" placeholder="Email" v-model="email" required) 
-                input.password(type="text" placeholder="Password" v-model="password" required)
-                .button-row
-                    a.google-button(@click="login()" href="#") Login With Google
-                    a.submit.buttons(@click.prevent="signIn()" href="#") Login
-        
-        .sign-up(v-if="signPage")
-            a.fas.fa-times.fa-3x(@click='signPage = false' href="#")
-            .signup-field
-                input.email(type="text" placeholder="Email" v-model="email" required)
-                input.password(type="text" placeholder="Password" v-model="password" required)
-                .button-row
-                    a.google-button(@click="login()" href="#") Sign Up With Google
-                    a.submit.buttons(@click.prevent="signUp()" href="#") Sign Up
-        .swiper-container(:class="showInstructions")
-            .swiper-wrapper
-                .swiper-slide.slide-1
-                    h2 How It Works
-                    hr
-                    .img
-                    h1 Login
-                .swiper-slide.slide-2
-                    h2 How It Works
-                    hr
-                    .img
-                    h1 Add Task
-                .swiper-slide.slide-3
-                    h2 How It Works
-                    hr
-                    .img
-                    h1 View Task(s)
-                .swiper-slide.slide-4
-                    h2 How It Works
-                    hr
-                    .img
-                    h1 That's All
-                .swiper-slide.slide-5
-                    h2 Ready?
-                    hr
-                    a(@click="redirect()").primary-button.buttons Yes
-                    a(@click="firstSlide()").secondary-button.buttons No
-            .swiper-pagination
-            .swiper-button-next
-                .fas.fa-chevron-right.fa-3x
-            .swiper-button-prev
-                .fas.fa-chevron-left.fa-3x
+	#calendar-container(:class='calendarState' v-if='uid != null')
+		.arrows
+			a#prev(@click='removeMonth') 
+				i.fas.fa-angle-left.fa-5x
+		
+			h1 {{ months[activeMonth].name }} {{ activeYear }} 
+			
+			a#next(@click='addMonth')
+				i.fas.fa-angle-right.fa-5x
+		#calendar
+			h2 S
+			h2 M
+			h2 T
+			h2 W
+			h2 T
+			h2 F
+			h2 S
 
+			div.gray.days(v-for='i in lastMonth' @click='activeMonth -= 1')
+				p {{ i }}
+
+			div.days(v-for='day in thisMonth' @click='toggleEvent( tasks[day.key] )')
+				p {{ day.day }}
+				.tasks
+					.task-title(v-for='(task, index) in tasks[day.key]')
+						p(v-if='index < 3') {{ task.title }}
+					.task-title(v-if='tasks[day.key] && tasks[day.key].length > 3') 
+						p ...
+
+			.show-task(v-show='seen')
+				h2 Task for {{ activeDate.month }} / {{ activeDate.day }} / {{ activeDate.year }}
+				a(@click.stop @click='seen = !seen')
+					i.fas.fa-times.fa-3x
+				.task-container
+					h3(v-for='task in activeTasks')
+						strong Title: 
+						| {{ task.title }}
+						br
+						strong Description: 
+						| {{ task.description }}
+
+			.add-task(v-show='alsoSeen')
+				a(@click.stop @click='toggleAdd(i)')
+					i.fas.fa-times.fa-3x
+
+				.user-input
+					.title
+						h1 Add new task
+						hr
+					input.input-title(type='text' placeholder='Title' @keyup.enter='addEvent()' @click.stop v-model='title')
+					.row
+						input.input-month(type='number' placeholder='Month' min='1' max='12' required @keyup.enter='submit()' @click.stop v-model='month')
+						input.input-day(type='number' placeholder='Day' min='1' max='31' required @keyup.enter='submit()' @click.stop v-model='day')
+						input.input-year(type='number' placeholder='Year' min='2018' max='3000' required @keyup.enter='submit()' @click.stop v-model='year')
+					input.input-description(type='text' placeholder='Description (optional)' @keyup.enter='submit()' @click.stop v-model='description')
+					a.submit-button(@click.prevent='submit()') Submit
+
+				.user-output
+					.title
+						h1 Result
+						hr
+					p.output-title {{ title }}
+					.row
+						p.output-month {{ month }}
+						p.output-day {{ day }}
+						p.output-year {{ year }}
+					p.output-description {{ description }}
+
+			div.gray.days(v-for='i in nextMonth' @click='activeMonth += 1')
+				p {{ i }}
+		a.add-new.fas.fa-plus.fa-3x(@click.stop='toggleAdd(i)')
 block customJS
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.2/js/swiper.min.js")
-    script(src="/static/js/index.js")
+	script(src='/static/js/index.js')

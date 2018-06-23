@@ -1,0 +1,74 @@
+extends LAYOUT.pug
+
+block customCSS
+    link(rel="stylesheet", href="/static/css/login.css", type="text/css")
+    
+    // Google Font
+    link(href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet")
+    
+    // Swiper CSS
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css")
+
+block content
+    .instructions
+        h1 Hi {{ this.email }}
+        
+        .user-login(v-if="(signPage === false && loginPage === false)")
+            a.buttons(@click="loginPage = true" href="#") Login
+            a.buttons(@click="signPage = true" href="#") Sign Up
+            a.sign-out(@click="signOut()" href="#") Sign Out
+        
+        
+        form#login-form(v-if="loginPage")
+            a.fas.fa-times.fa-3x(@click='loginPage = false' href="#")
+            .login-field
+                input.email(type="text" placeholder="Email" v-model="email" required) 
+                input.password(type="text" placeholder="Password" v-model="password" required)
+                .button-row
+                    a.google-button(@click="login()" href="#") Login With Google
+                    a.submit.buttons(@click.prevent="signIn()" href="#") Login
+        
+        .sign-up(v-if="signPage")
+            a.fas.fa-times.fa-3x(@click='signPage = false' href="#")
+            .signup-field
+                input.email(type="text" placeholder="Email" v-model="email" required)
+                input.password(type="text" placeholder="Password" v-model="password" required)
+                .button-row
+                    a.google-button(@click="login()" href="#") Sign Up With Google
+                    a.submit.buttons(@click.prevent="signUp()" href="#") Sign Up
+        .swiper-container(:class="showInstructions")
+            .swiper-wrapper
+                .swiper-slide.slide-1
+                    h2 How It Works
+                    hr
+                    .img
+                    h1 Login
+                .swiper-slide.slide-2
+                    h2 How It Works
+                    hr
+                    .img
+                    h1 Add Task
+                .swiper-slide.slide-3
+                    h2 How It Works
+                    hr
+                    .img
+                    h1 View Task(s)
+                .swiper-slide.slide-4
+                    h2 How It Works
+                    hr
+                    .img
+                    h1 That's All
+                .swiper-slide.slide-5
+                    h2 Ready?
+                    hr
+                    a(@click="redirect()").primary-button.buttons Yes
+                    a(@click="firstSlide()").secondary-button.buttons No
+            .swiper-pagination
+            .swiper-button-next
+                .fas.fa-chevron-right.fa-3x
+            .swiper-button-prev
+                .fas.fa-chevron-left.fa-3x
+
+block customJS
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.2/js/swiper.min.js")
+    script(src="/static/js/login.js")
