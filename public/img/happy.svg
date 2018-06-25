@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="49" viewBox="0 0 56 49" fill="none">
+<rect width="56" height="49" fill="#A5E2F7"/>
+<path d="M33.7931 17.15C33.7931 26.6217 26.2283 34.3 16.8966 34.3C7.56484 34.3 0 26.6217 0 17.15C0 7.67832 7.56484 0 16.8966 0C26.2283 0 33.7931 7.67832 33.7931 17.15Z" transform="translate(10.6207 7.84)" fill="#A5E2F7"/>
+<ellipse cx="3.86207" cy="3.92" rx="3.86207" ry="3.92" transform="translate(24.1379 23.52)" fill="#373737"/>
+<ellipse cx="2.89655" cy="2.94" rx="2.89655" ry="2.94" transform="translate(25.1034 24.5)" fill="#FF6262"/>
+<rect width="7.72414" height="3.92" transform="translate(24.1379 23.52)" fill="#A5E2F7"/>
+<path d="M6.75862 3.43C6.75862 5.32434 5.24565 6.86 3.37931 6.86C1.51297 6.86 0 5.32434 0 3.43C0 1.53566 1.51297 0 3.37931 0C5.24565 0 6.75862 1.53566 6.75862 3.43Z" transform="translate(17.3793 16.66)" fill="#373737"/>
+<ellipse cx="3.37931" cy="3.43" rx="3.37931" ry="3.43" transform="translate(31.8621 16.66)" fill="#373737"/>
+<path d="M0 7.35L0.482759 5.39L0 3.43L0.965517 1.96L0.482759 0" transform="translate(9.65517 6.86)" stroke="#CCCCFF"/>
+<path d="M0 7.84L0.482759 5.74933L0 3.65867L0.965517 2.09067L0.482759 0" transform="translate(46.3448 1.96) scale(-1 1)" stroke="#CCCCFF"/>
+<path d="M0 7.35L0.482759 5.39L0 3.43L0.965517 1.96L0.482759 0" transform="translate(16.4138 0.98)" stroke="#F2CCFF"/>
+<path d="M0 7.35L0.482759 5.39L0 3.43L0.965517 1.96L0.482759 0" transform="translate(25.1034 3.92)" stroke="#F2CCFF"/>
+<path d="M0 5.39L0.482759 3.95267L0 2.51533L0.965517 1.43733L0.482759 0" transform="translate(19.3103 5.88)" stroke="#FFCCD9"/>
+<path d="M0 5.39L0.482759 3.95267L0 2.51533L0.965517 1.43733L0.482759 0" transform="translate(39.5862 7.84)" stroke="#FFCCD9"/>
+<path d="M0 6.37L0.482759 4.67133L0 2.97267L0.965517 1.69867L0.482759 0" transform="translate(35 0.196001)" stroke="#F2CCFF"/>
+<path d="M0 8.33L0.482759 6.10867L0 3.88733L0.965517 2.22133L0.482759 0" transform="translate(31.8621 4.9)" stroke="#CCFFFF"/>
+<path d="M0 8.33L0.482759 6.10867L0 3.88733L0.965517 2.22133L0.482759 0" transform="translate(42.4828 15.68)" stroke="#CCFFFF"/>
+<path d="M0 6.37L0.482759 4.67133L0 2.97267L0.965517 1.69867L0.482759 0" transform="translate(11.5862 14.7)" stroke="#CCFFFF"/>
+</svg>

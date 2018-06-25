@@ -39,28 +39,34 @@ block content
         .swiper-container(:class="showInstructions")
             .swiper-wrapper
                 .swiper-slide.slide-1
-                    h2 How It Works
-                    hr
+                    .swiper-slide-title
+                        h2 How It Works
+                        hr
                     .img
                     h1 Login
                 .swiper-slide.slide-2
-                    h2 How It Works
-                    hr
+                    .swiper-slide-title
+                        h2 How It Works
+                        hr
                     .img
+                        i.add-new.fas.fa-plus
                     h1 Add Task
                 .swiper-slide.slide-3
-                    h2 How It Works
-                    hr
+                    .swiper-slide-title
+                        h2 How It Works
+                        hr
                     .img
                     h1 View Task(s)
                 .swiper-slide.slide-4
-                    h2 How It Works
-                    hr
+                    .swiper-slide-title
+                        h2 How It Works
+                        hr
                     .img
                     h1 That's All
                 .swiper-slide.slide-5
-                    h2 Ready?
-                    hr
+                    .swiper-slide-title
+                        h2 Ready?
+                        hr
                     a(@click="redirect()").primary-button.buttons Yes
                     a(@click="firstSlide()").secondary-button.buttons No
             .swiper-pagination

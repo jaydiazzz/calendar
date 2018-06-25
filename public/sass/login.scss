@@ -53,14 +53,14 @@ body{
 
             .buttons{
                 &:nth-of-type(1){
-                    background-color:$mainGreen;
+                    background-color:$mainColor;
                     color:white;
                     margin-bottom:80px;
                 }
                 &:nth-of-type(2){
                     color:$mainBlack;
                     background-color:white;
-                    border:1px solid $mainGreen;
+                    border:1px solid $mainColor;
                 }
             }
 
@@ -108,7 +108,7 @@ body{
                         width: 50%;
                         text-align: center;
                         padding-top: 20px;
-                        border:1px solid $mainGreen;
+                        border:1px solid $mainColor;
                         border-radius:3px;
                         border-top-right-radius: 0;
                         border-bottom-right-radius: 0;
@@ -117,7 +117,7 @@ body{
                         }
                     }
                     .submit{
-                        background-color:$mainGreen;
+                        background-color:$mainColor;
                         color:white;
                         border-radius:3px;
                         text-align:center;
@@ -161,6 +161,10 @@ body{
                 align-items: center;
                 height:90%;
                 padding:50px 0;
+                
+                >*{
+                    flex:0 0 33%;
+                }
 
                 &.slide-1{
                     .img{
@@ -170,7 +174,19 @@ body{
 
                 &.slide-2{
                     .img{
-                        background-image:url('../img/calendar.svg');
+                        background-image:none;
+                        display:flex;
+                        justify-content:center;
+                        i{
+                            font-size: 200px;
+                            color: white;
+                            background-color: #CCCCFF;
+                            text-align: center;
+                            border-radius: 50%;
+                            height: 225px;
+                            width: 225px;
+                            padding-top: 12.5px;
+                        }
                     }
                 } 
 
@@ -182,34 +198,38 @@ body{
 
                 &.slide-4{
                     .img{
-                        background-image:url('../img/calendar.svg');
+                        background-image:url('../img/happy.svg');
                     }
                 }
 
                 &.slide-5{
-                    .img{
-                        background-image:url('../img/calendar.svg');
+                    >*{
+                        flex:none;
                     }
                 }
-                
-                h2{
+
+                .swiper-slide-title{
                     width:80%;
-                    text-align: center;
-                }
+                    justify-content:center;
                 
-                hr{
-                    width:80%;
-                    border-color:$mainBlack;
-                    background-color:$mainBlack;
+                    h2{
+                        width:100%;
+                        text-align: center;
+                    }
+                    
+                    hr{
+                        width:100%;
+                        border-color:$mainBlack;
+                        background-color:$mainBlack;
+                    }
                 }
 
                 .img{
                     width:350px;
-                    height:225px;
+                    min-height:225px;
                     background-repeat:no-repeat;
                     background-size: 100% 100%;
                     background-position:center;
-                    margin:80px 0;
                 }
 
                 h1{
@@ -223,13 +243,13 @@ body{
                 a{
                     margin-top:100px;
                     &.primary-button{
-                        background-color:$mainGreen;
+                        background-color:$mainColor;
                         color:white;
                     }
                     &.secondary-button{
                         background-color:white;
-                        color:$mainGreen;
-                        border:1px solid $mainGreen;
+                        color:$mainColor;
+                        border:1px solid $mainColor;
                     }
                 }
             }
@@ -246,12 +266,12 @@ body{
                 }
 
                 .swiper-pagination-bullet-active{
-                    background-color:$mainGreen;
+                    background-color:$mainColor;
                 }
             }
 
             .swiper-button-prev,.swiper-button-next{
-                color:$mainGreen;
+                color:$mainColor;
                 background-image:none;
                 margin:0 10px;
             }
