@@ -1,0 +1,252 @@
+/* --------- SITE STYLES ---------- */
+/* --------- COLOR SCHEME --------- */
+/* ----- OPAQUE COLOR SCHEME ------ */
+/* ---------- GREY SCALE ---------- */
+/* ------ OPAQUE GREY SCALE ------- */
+body {
+  background-color: #ffffff;
+  color: #373737;
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+  background: url("https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") center/100% 100% no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  z-index: -1; }
+  body:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    height: 100%;
+    width: 100%; }
+  body #content {
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center; }
+    body #content #calendar-container {
+      width: 150px;
+      height: 125px;
+      margin: calc(50vh - 125px) auto;
+      margin-bottom: auto;
+      border-radius: 3px;
+      overflow: hidden;
+      transition: 3s all ease;
+      border: 2px solid #373737;
+      animation: 2s bounce 2;
+      animation-fill-mode: forwards; }
+      body #content #calendar-container.loaded {
+        margin: 2% auto;
+        width: 70%;
+        height: auto; }
+        body #content #calendar-container.loaded * {
+          opacity: 1 !important; }
+        body #content #calendar-container.loaded .arrows {
+          height: 20%; }
+      body #content #calendar-container .arrows {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 30%;
+        flex-flow: row;
+        margin: auto;
+        background-color: #CCCCFF;
+        color: #f9f9f9; }
+        body #content #calendar-container .arrows > * {
+          opacity: 0; }
+        body #content #calendar-container .arrows #prev, body #content #calendar-container .arrows #next {
+          margin: 0 5px; }
+          body #content #calendar-container .arrows #prev:hover, body #content #calendar-container .arrows #next:hover {
+            cursor: pointer; }
+      body #content #calendar-container #calendar {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: flex-end;
+        flex-flow: row wrap;
+        text-align: center;
+        color: #373737;
+        background-color: #f9f9f9; }
+        body #content #calendar-container #calendar > * {
+          opacity: 0; }
+        body #content #calendar-container #calendar .gray {
+          color: #d9d9d9;
+          text-shadow: black 1px 1px 1px; }
+        body #content #calendar-container #calendar h2, body #content #calendar-container #calendar .days {
+          flex: 1 0 14%;
+          border: 1px dashed #c9c9c9bd; }
+        body #content #calendar-container #calendar h2 {
+          font-size: 38px;
+          margin: 0; }
+        body #content #calendar-container #calendar .days {
+          height: 125px; }
+          body #content #calendar-container #calendar .days:hover {
+            cursor: pointer; }
+          body #content #calendar-container #calendar .days p {
+            margin: 0;
+            font-size: 28px;
+            position: relative;
+            top: 0;
+            right: 20px;
+            width: 20%;
+            float: right; }
+          body #content #calendar-container #calendar .days .tasks .task-title {
+            position: relative;
+            width: 100%;
+            border-radius: 3px;
+            color: white;
+            text-shadow: 1px 1px 1px black;
+            background-color: #FFF9D6;
+            overflow: hidden; }
+            body #content #calendar-container #calendar .days .tasks .task-title:first-of-type {
+              background-color: #b0cbd6 !important; }
+            body #content #calendar-container #calendar .days .tasks .task-title:nth-of-type(2) {
+              background-color: #914443 !important; }
+            body #content #calendar-container #calendar .days .tasks .task-title:nth-of-type(3) {
+              background-color: #FFF9D6 !important; }
+            body #content #calendar-container #calendar .days .tasks .task-title:nth-of-type(4), body #content #calendar-container #calendar .days .tasks .task-title:nth-of-type(n+6) {
+              display: none; }
+            body #content #calendar-container #calendar .days .tasks .task-title:last-of-type {
+              background-color: #3b3537;
+              display: block; }
+            body #content #calendar-container #calendar .days .tasks .task-title p {
+              font-size: 16px;
+              width: 100%;
+              left: 0;
+              right: 0; }
+      body #content #calendar-container .add-task {
+        position: absolute;
+        background-color: white;
+        color: #373737;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        z-index: 3;
+        text-align: center; }
+        body #content #calendar-container .add-task .user-input {
+          border-right: 1px solid #d9d9d9; }
+          body #content #calendar-container .add-task .user-input h3 {
+            margin: 0; }
+          body #content #calendar-container .add-task .user-input input {
+            border: 1px solid #d9d9d9;
+            border-radius: 3px;
+            width: 80%;
+            margin: 10px auto;
+            padding: 2%;
+            font-size: 18px;
+            font-family: 'Nunito Sans', sans-serif; }
+          body #content #calendar-container .add-task .user-input .input-description {
+            padding-bottom: 20vh; }
+          body #content #calendar-container .add-task .user-input a.submit-button {
+            width: 20%;
+            padding: 2% 0;
+            align-self: flex-end;
+            border-radius: 3px;
+            background-color: #914443;
+            color: white;
+            margin-right: 8%;
+            font-size: 18px; }
+            body #content #calendar-container .add-task .user-input a.submit-button:hover {
+              cursor: pointer; }
+        body #content #calendar-container .add-task .user-output p {
+          font-size: 18px;
+          border: 1px solid #d9d9d9;
+          border-radius: 3px;
+          width: 80%;
+          margin: 10px auto;
+          padding: 2%;
+          text-align: left; }
+        body #content #calendar-container .add-task .user-output .output-description {
+          padding-bottom: 20vh; }
+        body #content #calendar-container .add-task .user-input, body #content #calendar-container .add-task .user-output {
+          display: flex;
+          flex-flow: column;
+          justify-content: flex-start;
+          flex: 1 0 49%; }
+          body #content #calendar-container .add-task .user-input h1, body #content #calendar-container .add-task .user-output h1 {
+            margin: 2% 0; }
+          body #content #calendar-container .add-task .user-input hr, body #content #calendar-container .add-task .user-output hr {
+            background-color: #ccc;
+            width: 80%; }
+          body #content #calendar-container .add-task .user-input .row, body #content #calendar-container .add-task .user-output .row {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            width: 80%;
+            margin: 10px auto; }
+            body #content #calendar-container .add-task .user-input .row input, body #content #calendar-container .add-task .user-input .row p, body #content #calendar-container .add-task .user-output .row input, body #content #calendar-container .add-task .user-output .row p {
+              flex: 0 0 25%;
+              text-align: center;
+              margin: 10px 0; }
+      body #content #calendar-container .show-task {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        left: 0;
+        background-color: white;
+        overflow: hidden; }
+        body #content #calendar-container .show-task h2 {
+          padding: 2% 0;
+          height: auto;
+          border-top-width: 0px !important;
+          border-left-width: 0px !important;
+          border-right-width: 0px !important;
+          font-size: 38px;
+          margin: 0;
+          text-align: center;
+          border: 1px dashed #c9c9c9bd; }
+        body #content #calendar-container .show-task .task-container {
+          overflow-y: scroll;
+          width: 100%;
+          height: 86%;
+          position: relative;
+          top: 0;
+          left: 0; }
+          body #content #calendar-container .show-task .task-container h3 {
+            font-size: 32px;
+            text-align: left;
+            font-weight: 400;
+            padding: 1% 2%; }
+            body #content #calendar-container .show-task .task-container h3:nth-of-type(odd) {
+              background-color: #f9f9f9; }
+      body #content #calendar-container .fa-plus {
+        background-color: #CCCCFF;
+        color: white;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        z-index: 2;
+        opacity: 0;
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        line-height: 60px; }
+        body #content #calendar-container .fa-plus:hover {
+          animation: 3s bounce 1;
+          animation-fill-mode: forwards;
+          cursor: pointer; }
+      body #content #calendar-container .fa-times {
+        top: 20px;
+        right: 20px;
+        position: absolute;
+        color: #914443; }
+        body #content #calendar-container .fa-times:hover {
+          cursor: pointer; }
+
+@-webkit-keyframes bounce {
+  from {
+    transform: scale(1.1, 1.1); }
+  to {
+    transform: none; } }
