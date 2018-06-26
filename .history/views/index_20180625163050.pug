@@ -37,7 +37,7 @@ block content
 				p {{ i }}
 
 		.show-task(v-show='seen')
-			h2 Task for {{ activeDate.month + 1 }} / {{ activeDate.day + 1 }} / {{ activeDate.year }}
+			h2 Task for {{ activeDate.month }} / {{ activeDate.day }} / {{ activeDate.year }}
 			a(@click.stop @click='seen = !seen')
 				i.fas.fa-times.fa-3x
 			.task-container

@@ -4,11 +4,11 @@ const app = new Vue( { //eslint-disable-line
 	el : '.instructions',
 
 	mounted() {
-		
+
 		// Update our data if user signs in / out
 
 		firebase.auth().onAuthStateChanged( ( user ) => {
-			
+
 			if ( user ) {
 
 				this.userId   = user.uid;
@@ -45,7 +45,7 @@ const app = new Vue( { //eslint-disable-line
 		loginPage : false,
 		signPage  : false,
 
-		showInstructions : "hidden",
+		showInstructions : 'hidden',
 	},
 
 	methods : {
@@ -53,7 +53,7 @@ const app = new Vue( { //eslint-disable-line
 		login() {
 
 			// Check to see if user is signed in already
-			
+
 			// NOTE: Their email is displayed at the top left
 			// corner of the page
 
@@ -95,11 +95,11 @@ const app = new Vue( { //eslint-disable-line
 				.then( () => {
 					console.log( 'signed out user' );
 				} )
-                .catch( ( error ) => {
+				.catch( ( error ) => {
 					// For development purposes, delete is optional
 
                     console.log( error );
-                } );
+				} );
 		},
 
 		signUp() {
@@ -117,16 +117,16 @@ const app = new Vue( { //eslint-disable-line
 				.then( () => {
 					// Display instructions for new user
 
-					this.showInstructions = "opened";
+					this.showInstructions = 'opened';
 					this.signPage 		  = false;
 					this.loginPage 		  = false;
 
 				} )
-				.catch( (error) => {
+				.catch( ( error ) => {
 					// Handle errors here.
-					
-					var errorCode = error.code;
-					var errorMessage = error.message;
+
+					const errorCode = error.code;
+					const errorMessage = error.message;
 					alert( `There has been an error: ${errorMessage}` );
 					return;
 
@@ -145,8 +145,8 @@ const app = new Vue( { //eslint-disable-line
 					const errorMessage = error.message;
 				} );
 
-			// Once they are signed in redirect them to the 
-			// calendar page 
+			// Once they are signed in redirect them to the
+			// calendar page
 
 			if ( this.userId != null ) {
 				location.href = 'index';
@@ -156,7 +156,7 @@ const app = new Vue( { //eslint-disable-line
 		},
 
 		redirect() {
-			
+
 			// Only newly registered users can access this function
 
 			// When the user clicks the button, we make a task to 
@@ -178,11 +178,11 @@ const app = new Vue( { //eslint-disable-line
 		},
 
 		firstSlide() {
-			
+
 			// In case user wants to go back on the instructions and doesn't understand
 
 			swiper.activeIndex = 0;
-			swiper.slideTo(0);
+			swiper.slideTo( 0 );
 		},
 	}
 } );
