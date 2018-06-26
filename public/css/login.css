@@ -212,14 +212,4 @@ body .instructions {
   .login-field, .signup-field, .user-login {
     width: 100% !important; }
   .button-row .google-button {
-    padding-top: 10px !important; }
-  #calendar-container.loaded {
-    width: 100%;
-    margin: 0% auto; }
-    #calendar-container.loaded #calendar .days {
-      height: 80px; }
-      #calendar-container.loaded #calendar .days p {
-        right: 28px; }
-    #calendar-container.loaded .add-task {
-      height: auto !important;
-      flex-flow: column !important; } }
+    padding-top: 10px !important; } }

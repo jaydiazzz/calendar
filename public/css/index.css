@@ -250,3 +250,15 @@ body {
     transform: scale(1.1, 1.1); }
   to {
     transform: none; } }
+
+@media screen and (max-width: 450px) {
+  #calendar-container.loaded {
+    width: 100%;
+    margin: 0% auto; }
+    #calendar-container.loaded #calendar .days {
+      height: 80px; }
+      #calendar-container.loaded #calendar .days p {
+        right: 28px; }
+    #calendar-container.loaded .add-task {
+      height: auto !important;
+      flex-flow: column !important; } }
