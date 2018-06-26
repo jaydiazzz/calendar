@@ -208,7 +208,7 @@ body .instructions {
     opacity: 1;
     transform: translateY(0px); } }
 
-@media screen and (max-width: 300) {
+@media screen and (max-width: 450) {
   .login-field, .signup-field, .user-login {
     width: 100% !important; }
   .button-row .google-button {
