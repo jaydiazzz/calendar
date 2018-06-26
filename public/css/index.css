@@ -253,12 +253,12 @@ body {
 
 @media screen and (max-width: 450px) {
   #calendar-container.loaded {
-    width: 100%;
-    margin: 0% auto; }
+    width: 100% !important;
+    margin: 0% auto !important; }
     #calendar-container.loaded #calendar .days {
-      height: 80px; }
+      height: 80px !important; }
       #calendar-container.loaded #calendar .days p {
-        right: 28px; }
+        right: 28px !important; }
     #calendar-container.loaded .add-task {
       height: auto !important;
       flex-flow: column !important; } }
