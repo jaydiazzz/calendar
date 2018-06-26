@@ -219,4 +219,7 @@ body .instructions {
     #calendar-container.loaded #calendar .days {
       height: 80px; }
       #calendar-container.loaded #calendar .days p {
-        right: 28px; } }
+        right: 28px; }
+    #calendar-container.loaded .add-task {
+      height: auto !important;
+      flex-flow: column !important; } }
