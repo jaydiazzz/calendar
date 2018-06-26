@@ -309,3 +309,96 @@ body{
     }
 }
 
+// body{
+//     background-color:#fbfbfb;
+//     color:$black;
+//     font-family:'Nunito Sans', sans-serif;
+//     background-image: url('https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+//     background-position: 0 0;
+//     background-size: 100% 100%;
+//     background-repeat: no-repeat;
+//     margin:0;
+//     .arrows{
+//         display:flex;
+//         justify-content:space-between;
+//         width:70%;
+//         flex-flow:row;
+//         margin:auto;
+//         #prev,#next{
+//             color:$black;
+//             &:hover{
+//                 cursor:pointer;
+//             }
+//         }
+//         h1{
+//             color:white;
+//         }
+//     }
+//     #calendar{
+//         width:70%;
+//         margin:auto;
+//         display:flex;
+//         justify-content:flex-end;
+//         flex-flow:row wrap;
+//         text-align:center;
+//         box-shadow: -6px 6px 12px #373737;
+//         text-shadow: black 1px 1px 1px;
+//         color:white;
+//         position:relative;
+//         background-color:rgba(182, 217, 213,.9);
+//         .gray{
+//             color:#696969;
+//         }
+//         h2, .days{
+//             flex:1 0 14%;
+//             border:1px dashed $black;
+//         } 
+//         h2{
+//             font-size:38px;
+//             margin:0;
+//         }
+//         .days{
+//             height:125px;
+//             &:hover{
+//                 cursor:pointer;
+//             }
+//             p{
+//                 margin:0;
+//                 font-size:28px;
+//                 position:relative;
+//                 top:0;
+//                 right:20px; 
+//                 width:20%;
+//                 float:right;                    
+//             }
+//             .task{
+//                 position:absolute;
+//                 background-color:white;
+//                 color:$black;
+//                 width:50%;
+//                 height:80vh;
+//                 border-radius:3px;
+//                 top:10vh;
+//                 left:25%;
+//                 display:flex;
+//                 flex-flow:column;
+//                 justify-content:flex-start;
+//                 hr{
+//                     background-color:#ccc;
+//                     width:80%;
+//                 }
+//                 h3{
+//                     margin:0;
+//                 }
+//                 input{
+//                     border:0px solid transparent;
+//                     padding-bottom:20vh;
+//                     width:80%;
+//                     margin:0 auto;
+//                     font-size:16px;
+//                 }
+//             }
+//         }
+//     }
+// }
+
